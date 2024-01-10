@@ -31,3 +31,5 @@ export module SqlData {
 		seedData?: T[];
 	}
 }
+
+//export type Search<CharacterData> = Partial<CharacterData> & Pick<CharacterData, keyof CharacterData>;

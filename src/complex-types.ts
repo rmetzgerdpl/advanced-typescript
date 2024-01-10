@@ -41,7 +41,7 @@ function equalsPartial<V extends object>(value1: V, value2: Partial<V> | Recursi
 	let match = Object.keys(value2)
 		.every(key => {
 			return key in value1
-				&& equalsPartial(<V>value1[<keyof V>key], value2[<keyof V>key]);
+				&& equalsPartial(<V><unknown>value1[<keyof V>key], value2[<keyof V>key]);
 		});
 
 	return match;

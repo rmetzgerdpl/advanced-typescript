@@ -8,8 +8,7 @@ export function exampleExtends() {
 	levelUp(character);
 
 	let sword = BroadSword;
-	// levelUp(sword); //Does not work
-
+	//levelUp(sword);
 
 	let elevator = {
 		id: 42,
@@ -17,7 +16,7 @@ export function exampleExtends() {
 		level: 15
 	};
 
-	// levelUp(elevator); //TODO Will this work?
+	levelUp(elevator); //TODO Will this work?
 }
 
 function levelUp<T extends Character>(character: T) {
@@ -36,6 +35,7 @@ export function exampleUnion() {
 	let numericValue = increment(4.5);
 	console.log(`${numericValue} as an exponent ${numericValue.toExponential()}`);
 
+	// let boolValue = increment(false);
 	//TODO Notice the return type is the same value being passed in
 }
 

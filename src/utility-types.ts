@@ -7,7 +7,7 @@ type OmitCharacter = Omit<Character, 'id'>;
 export function exampleOmit() {
 	writeOmitCharacter({
 		name: 'Legolas',
-		level: 10
+		level: 10,
 	});
 
 	writeOmitCharacter(Gimli);
@@ -57,15 +57,16 @@ function writePartialCharacter(character: PartialCharacter) {
 //#endregion
 
 
-
 //#region Realistic example
 export function exampleReal() {
 	//Example using Omit (see SqlData and CharacterData constructors)
 	let characterData = new CharacterData();
 
 	//Example using partial (see search method)
-	characterData.search({ level: 1 });
+	let character = characterData.search({ level: 1 });
 
 	//TODO What if we only want to allow searching by certain fields?
+	console.log(characterData);
+	console.log(character);
 }
 //#endregion

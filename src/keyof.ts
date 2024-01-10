@@ -11,7 +11,7 @@ export function exampleKeyof() {
 		charisma: 10
 	};
 
-	incrementStat(stats, 'strength');
+	incrementStat(stats, 'wisdom');
 
 	console.log(stats);
 }
@@ -39,6 +39,7 @@ export function exampleForEach() {
 	//This won't compile...
 	// Object.keys(stats).forEach(key => console.log(stats[key]));
 
+	// What are we doing below that we aren't doing in the line above?
 	Object.keys(stats).forEach(key => console.log(stats[<keyof CharacterStats>key]));
 }
 //#endregion
@@ -60,13 +61,13 @@ export function exampleProperty() {
 		charisma: 10
 	};
 
-	logObject(stats, {charisma: true, dexterity: false, wisdom: true});
+	logObject(stats, {charisma: true, dexterity: false, wisdom: true,});
 }
 
 function logObject<T>(value: T, printKeys: TransformBoolean<T>) {
 	Object.keys(printKeys)
-		.filter(key => printKeys[<keyof T>key])
-		.forEach(key => console.log(`${key}: ${value[<keyof T>key]}`));
+		.filter(key => printKeys[<keyof T>key]) // filters where value of pair is true
+		.forEach(key => console.log(`${key}: ${value[<keyof T>key]}`)); // grabs value of pair
 }
 //#endregion
 
@@ -74,7 +75,7 @@ function logObject<T>(value: T, printKeys: TransformBoolean<T>) {
 
 //#region keyof property part 2
 type Transform<T, V> = {
-	[K in keyof T]?: V
+	[K in keyof T]?: V // grab K from T 
 };
 
 export function exampleTransform() {
@@ -87,7 +88,7 @@ export function exampleTransform() {
 		charisma: 10
 	};
 
-	logObject2(stats, {charisma: true});
+	logObject2(stats, {charisma: true, wisdom: true});
 }
 
 function logObject2<T>(value: T, printKeys: Transform<T, boolean>) {
